@@ -21,8 +21,7 @@
 #include <X11/Xresource.h>
 
 /* macros */
-#define INTERSECT(x,y,w,h,r)  (MAX(0, MIN((x)+(w),(r).x_org+(r).width)  - MAX((x),(r).x_org)) \
-                             * MAX(0, MIN((y)+(h),(r).y_org+(r).height) - MAX((y),(r).y_org)))
+#define INTERSECT(x,y,w,h,r)  (MAX(0, MIN((x)+(w),(r).x_org+(r).width)  - MAX((x),(r).x_org)) && MAX(0, MIN((y)+(h),(r).y_org+(r).height) - MAX((y),(r).y_org)))
 #define LENGTH(X)             (sizeof X / sizeof X[0])
 #define TEXTW(X)              (drw_fontset_getwidth(drw, (X)) + lrpad)
 
@@ -743,7 +742,7 @@ usage(void)
 	fputs("usage: dmenu [-bfiv] [-l lines] [-p prompt] [-fn font] [-m monitor]\n"
 	      "             [-nb color] [-nf color] [-sb color] [-sf color]\n"
 	      "				[-h height] [-x xoffset] [-y yoffset] [-w width]\n"
-		  "             [-nhb color] [-nhf color] [-shb color] [-shf color] [-w windowid]\n", stderr);
+		  "         [-bc color] [-nhb color] [-nhf color] [-shb color] [-shf color] [-w windowid]\n", stderr);
  	exit(1);
 }
 
@@ -800,6 +799,8 @@ main(int argc, char *argv[])
 			colors[SchemeNormHighlight][ColFg] = argv[++i];
 		else if (!strcmp(argv[i], "-shb")) /* selected hi background color */
 			colors[SchemeSelHighlight][ColBg] = argv[++i];
+		else if (!strcmp(argv[i], "-bc")) /* selected hi foreground color */
+			colors[SchemeBorder][ColBg] = argv[++i];
 		else if (!strcmp(argv[i], "-shf")) /* selected hi foreground color */
 			colors[SchemeSelHighlight][ColFg] = argv[++i];
 		else if (!strcmp(argv[i], "-w"))   /* embedding window id */
