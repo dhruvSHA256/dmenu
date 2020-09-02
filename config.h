@@ -15,11 +15,11 @@ static const char *prompt =
     NULL; /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {
     /*     fg         bg       */
-    [SchemeNorm] = {"#bbbbbb", "#1f2430"},
-    [SchemeSel] = {"#ffffff", "#2f3440"},
+    [SchemeNorm] = {"#aaaaaa", "#2E3440"},
+    [SchemeSel] = {"#F4F7F5", "#2f3440"},
     [SchemeOut] = {"#000000", "#00ffff"},
-    [SchemeSelHighlight] = {"#abd76f", "#2f3440"},
-    [SchemeNormHighlight] = {"#bae67e", "#1f2430"},
+    [SchemeSelHighlight] = {"#abd76f", "#2E3440"},
+    [SchemeNormHighlight] = {"#bae67e", "#2E3440"},
     [SchemeBorder] = {"#ffffff", "#ffe6b3"},  // not used value ,border color
 };
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
